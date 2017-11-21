@@ -11,7 +11,6 @@ export class MessagesList extends Component {
 
   render () {
     const { messageEntry } = this.props
-    console.log('message', messageEntry.allMessages)
     return (
       <div id="live-chat">
         {
