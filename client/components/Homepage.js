@@ -15,14 +15,12 @@ class Homepage extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-
     if (this.props.user !== nextProps.user) {
       this.props.getAllRooms(nextProps.user)
     }
   }
 
   render() {
-    console.log('homepage', this.props.user)
     return (
       <div>
         <h2>Welcome, {this.props.user.name}</h2>
