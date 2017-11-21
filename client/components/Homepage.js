@@ -22,6 +22,7 @@ class Homepage extends Component {
   }
 
   render() {
+    console.log('homepage', this.props.user)
     return (
       <div>
         <h2>Welcome, {this.props.user.name}</h2>
