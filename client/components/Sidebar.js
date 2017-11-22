@@ -4,11 +4,11 @@ import { withRouter } from 'react-router'
 import Chatbox from './Chatbox'
 import Attendees from './Attendees'
 
-export class Sidebar extends Component {
+class Sidebar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      show: true
+      show: false
     }
   }
 
@@ -19,15 +19,15 @@ export class Sidebar extends Component {
         <button onClick={() => this.setState({ show: !show })}>-</button>
           {
             show ?
-            <div>
+            <span>
               <h5 href="#">
               <div>Attendees</div>
               <i alt="Brand" className="glyphicon glyphicon-comment">
               </i>
-            </h5>
-            <Attendees />
-            <Chatbox />
-            </div> : null
+              </h5>
+              <Attendees />
+              <Chatbox />
+            </span> : null
           }
       </div>
     );
