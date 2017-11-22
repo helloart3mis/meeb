@@ -199,8 +199,6 @@ class Whiteboard extends Component {
                     onMouseUp={this.onMouseUp}
                     onClick={this.clickConnection}
                     onMouseDown={(evt) => {this.setState({ selectedNote: note.id }); this.onMouseDown(evt)}} >
-                    {console.log('clickConnection', this.state.connectionArray)}
-                    {console.log('key', note.id)}
                   <button value={note.id} onClick={this.handleDelete}>x</button>
                     { note.text &&
                       <div className="card-content">
@@ -256,6 +254,7 @@ class Whiteboard extends Component {
 
           })
         }
+        {console.log('clickArray', this.state.connectionArray)}
       </div>
     );
   }

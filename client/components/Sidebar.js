@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import Chatbox from './Chatbox'
 import Attendees from './Attendees'
-// import { fetchRoom } from '../store'
 
 export class Sidebar extends Component {
   constructor(props) {
@@ -12,10 +11,6 @@ export class Sidebar extends Component {
       show: true
     }
   }
-  // componentDidMount() {
-  //   const { id } = this.props.match.params
-  //   this.props.getWhiteboard(id)
-  // }
 
   render() {
     const { show } = this.state
@@ -39,7 +34,6 @@ export class Sidebar extends Component {
   }
 }
 
-// we can do all of this from attendees
 const mapState = null
 
 const mapDispatch = null
