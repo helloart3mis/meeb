@@ -17,9 +17,9 @@ const Attendees = require('./attendees')
 Drawing.hasMany(Stroke);
 Drawing.belongsTo(User);
 Note.belongsTo(User);
-Note.hasMany(Note);
 Whiteboard.belongsToMany(User, { through: Attendees });
 User.belongsToMany(Whiteboard, { through: Attendees });
+Note.belongsToMany(Note, {as: 'NoteChild', through: 'NoteConnection'})
 Whiteboard.belongsTo(User);
 Whiteboard.hasMany(Note);
 Whiteboard.hasMany(Drawing);

@@ -11,7 +11,8 @@ class Whiteboard extends Component {
       dragging: false,
       rel: null,
       pos: {x: null, y: null},
-      selectedNote: 0
+      selectedNote: 0,
+      connectionArray: []
     }
 
     this.positions = []
@@ -21,6 +22,7 @@ class Whiteboard extends Component {
     this.onMouseUp = this.onMouseUp.bind(this)
     this.onMouseMove = this.onMouseMove.bind(this)
     this.handleDelete = this.handleDelete.bind(this);
+    this.clickConnection = this.clickConnection.bind(this)
 
   }
 
@@ -35,7 +37,7 @@ class Whiteboard extends Component {
     let eNoteWidth = 270;
     let eNoteHeight = 150;
     // this.positions = this.generatePositionsArray(data.height, data.width, eNoteHeight, eNoteWidth, data.left, data.top );
-    this.positions = this.generatePositionsArray(4000, 4000, eNoteHeight, eNoteWidth, data.left, data.top);
+    this.positions = this.generatePositionsArray(1000, 1000, eNoteHeight, eNoteWidth, data.left, data.top);
   }
 
   componentDidUpdate(props, state) {
@@ -167,6 +169,11 @@ class Whiteboard extends Component {
     this.props.deleteNote(evt.target.value);
   }
 
+  clickConnection (evt) {
+    console.log('clickconnection outside', evt.target.key)
+    this.state.connectionArray.push(evt.target.key)
+  }
+
 
   render() {
     let data = [];
@@ -190,8 +197,10 @@ class Whiteboard extends Component {
                     style = {{position: 'absolute', left: this.state.selectedNote === note.id && this.state.pos.x || note.position[0], top: this.state.selectedNote === note.id && this.state.pos.y || note.position[1], cursor: 'pointer' }}
                     onMouseMove={this.onMouseMove}
                     onMouseUp={this.onMouseUp}
+                    onClick={this.clickConnection}
                     onMouseDown={(evt) => {this.setState({ selectedNote: note.id }); this.onMouseDown(evt)}} >
-
+                    {console.log('clickConnection', this.state.connectionArray)}
+                    {console.log('key', note.id)}
                   <button value={note.id} onClick={this.handleDelete}>x</button>
                     { note.text &&
                       <div className="card-content">
